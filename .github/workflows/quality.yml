@@ -1,0 +1,49 @@
+name: quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1" # weekly (Mon 06:00 UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  awesome-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run awesome-lint
+        run: npx --yes awesome-lint README.md
+
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links (lychee)
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --method get
+            --user-agent "Mozilla/5.0"
+            --accept "200..=299,403,429"
+            --timeout 20
+            --max-retries 3
+            --retry-wait-time 2
+            --exclude "^https://x.com/" \
+            --exclude "^https://www.youtube.com/" \
+            --exclude "^https://youtu.be/" \
+            "**/*.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
