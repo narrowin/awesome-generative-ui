@@ -29,13 +29,13 @@ Generative UI represents a paradigm shift from "AI assists coding" to "AI genera
 
 ### The Spectrum
 
-| Dimension              | Traditional UI                 | AI-Assisted UI                         | Generative UI                              |
-| ---------------------- | ------------------------------ | -------------------------------------- | ------------------------------------------ |
-| Primary workflow       | Developers hand-code components | Copilot helps developers write code     | Model generates UI components from intent  |
-| Developer involvement  | High (author everything)        | High (developer in the loop)            | Lower per UI (developer sets constraints)  |
-| Runtime behavior       | Static UI                        | Static UI (generation happens in dev)   | Dynamic / runtime-generated UI             |
-| Typical output         | Source code                       | Source code                              | Components, schemas, or rendered UI        |
-| Best for               | Predictability, control           | Faster delivery with human oversight     | Personalization and rapid UI composition   |
+| Dimension             | Traditional UI                  | AI-Assisted UI                        | Generative UI                             |
+| --------------------- | ------------------------------- | ------------------------------------- | ----------------------------------------- |
+| Primary workflow      | Developers hand-code components | Copilot helps developers write code   | Model generates UI components from intent |
+| Developer involvement | High (author everything)        | High (developer in the loop)          | Lower per UI (developer sets constraints) |
+| Runtime behavior      | Static UI                       | Static UI (generation happens in dev) | Dynamic / runtime-generated UI            |
+| Typical output        | Source code                     | Source code                           | Components, schemas, or rendered UI       |
+| Best for              | Predictability, control         | Faster delivery with human oversight  | Personalization and rapid UI composition  |
 
 ### Why It Matters
 
@@ -102,11 +102,6 @@ Google's research (see below) suggests unconstrained generation may become the d
 - [Pix2Struct: Screenshot Parsing as Pretraining for Visual Language Understanding](https://arxiv.org/abs/2210.03347) - Google (2023). Vision-language model pretrained on web screenshots. Foundation for screenshot-to-code approaches.
 
 *Note: Generative UI is an emerging field. Much knowledge lives in blog posts, SDKs, and industry practice rather than academic papers.*
-
-### Blog Posts from Labs
-
-- [Vercel: Introducing AI SDK 3.0 with Generative UI](https://vercel.com/blog/ai-sdk-3-generative-ui) - Vercel blog post introducing Generative UI features in the AI SDK.
-- [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) - Anthropic engineering post on agent design patterns relevant to tool-using UI systems.
 
 ---
 
@@ -281,9 +276,14 @@ Building blocks for reliable generation:
 - [gen-ui](https://github.com/bracesproul/gen-ui) - Reference implementation for generative UI with LangChain.js, AI SDK, and Next.js.
 - [termite](https://github.com/shobrook/termite) - Terminal-based generative UI.
 
-
 ---
 
+## Articles & Talks
+
+- [Vercel: Introducing AI SDK 3.0 with Generative UI](https://vercel.com/blog/ai-sdk-3-generative-ui) - Vercel blog post introducing Generative UI features in the AI SDK.
+- [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) - Anthropic engineering post on agent design patterns relevant to tool-using UI systems.
+
+---
 
 ## Related Concepts
 
