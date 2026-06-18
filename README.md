@@ -159,6 +159,7 @@ Building blocks for reliable generation:
 - [v0.dev](https://v0.dev/) - Vercel (commercial). Generate React/Tailwind components from prompts; known for shadcn/ui integration.
 - [OpenUI](https://github.com/wandb/openui) - Weights & Biases. Describe UI in natural language and see it rendered live.
 - [openv0](https://github.com/raidendotai/openv0) - Open source v0 clone that generates React/Tailwind components from prompts.
+- [Roblox GUI Maker](https://robloxguimaker.dev/) - Generate Roblox Studio ScreenGui layouts, HUDs, menus, and Lua UI starter code from prompts.
 
 ### App Builders
 
