@@ -301,6 +301,7 @@ Design-to-code converts designs (e.g., Figma) to code. Code generation is the br
 - [OpenAI Evals](https://github.com/openai/evals) - OpenAI. Framework for evaluating model outputs with custom tasks and graders.
 - [TruLens](https://github.com/truera/trulens) - TruEra. Evaluation and feedback tooling for LLM applications.
 - [LangSmith Evaluation](https://docs.smith.langchain.com/evaluation) - LangChain. Evaluation patterns and workflows for LLM apps.
+- [Future AGI](https://github.com/future-agi/future-agi) - Future AGI. Open-source platform to simulate, evaluate, trace, guardrail, route, and optimize LLM and AI agent apps in one feedback loop, so agents don't just get monitored, they self-improve. Self-hostable. Apache-2.0.
 
 ### Standards & Formats
 
