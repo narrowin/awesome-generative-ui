@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -30,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check links (lychee)
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --verbose
@@ -41,9 +43,9 @@ jobs:
             --timeout 20
             --max-retries 3
             --retry-wait-time 2
-            --exclude "^https://x.com/" \
-            --exclude "^https://www.youtube.com/" \
-            --exclude "^https://youtu.be/" \
+            --exclude "^https://x.com/"
+            --exclude "^https://www.youtube.com/"
+            --exclude "^https://youtu.be/"
             "**/*.md"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -45,13 +45,13 @@ For simple additions, open an issue with:
 ### Format Guidelines
 
 ```markdown
-- **[Resource Name](https://url.com/)** - Organization/Author. Brief description of what it does and why it's notable.
+- [Resource Name](https://url.com/) - Organization/Author. Brief description of what it does and why it's notable.
 ```
 
-- Use `**bold**` for resource names
-- Include organization/author when relevant
-- Keep descriptions concise (under 30 words)
-- Use a plain hyphen (` - `) as the separator to stay compatible with awesome-lint
+- Use a plain hyphen surrounded by spaces (` - `) as the separator between the link and description. This is required by `awesome-lint` (which runs in CI); em-dashes or bold link text will fail the check.
+- Include organization/author when relevant.
+- Keep descriptions concise (under 30 words).
+- Match the style of existing entries in the same section.
 
 ## Section Guidelines
 

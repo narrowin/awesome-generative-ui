@@ -80,16 +80,18 @@ Using JSON schemas or function calling to ensure AI outputs valid, parseable UI 
 
 A fundamental design decision in generative UI systems:
 
-| Approach          | Description                           | Examples                                   |
-| ----------------- | ------------------------------------- | ------------------------------------------ |
-| **Constrained**   | AI selects from registered components | Vercel AI SDK `streamUI()`, Tambo, v0.dev  |
-| **Unconstrained** | AI generates raw HTML/CSS/JS directly | Google GenUI, Claude Artifacts, MCP Apps   |
+| Approach          | Description                           | Examples                                                              |
+| ----------------- | ------------------------------------- | --------------------------------------------------------------------- |
+| **Constrained**   | AI selects from registered components | Vercel AI SDK `streamUI()`, A2UI, Crayon, assistant-ui, Tambo, v0.dev |
+| **Unconstrained** | AI generates raw HTML/CSS/JS directly | Google GenUI research, Claude Artifacts, MCP Apps, OpenAI Canvas      |
 
 **Constrained systems** are safer and more consistent — the AI can only use pre-approved components with known behavior. Trade-off: less flexible, requires component development upfront.
 
 **Unconstrained systems** are more powerful — the AI can create anything. Trade-off: needs sandboxing (iframe, E2B), potential for inconsistency, and security considerations.
 
 Google's research (see below) suggests unconstrained generation may become the dominant approach as models improve. They found users preferred AI-generated HTML/CSS over markdown 83% of the time, calling it an "emergent capability" — models produce good UIs without UI-specific training.
+
+In practice, the 2025–2026 wave of production systems has leaned the other way. AG-UI, Google's own A2UI spec, the MCP Apps extension, and SDKs like Crayon and assistant-ui all standardize on *constrained / declarative* output — agents emit allow-listed components rather than raw code — for safety and consistency. Both ends of the spectrum are advancing in parallel rather than one cleanly winning.
 
 ---
 
@@ -125,7 +127,26 @@ Google's research (see below) suggests unconstrained generation may become the d
 
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) - Anthropic. Protocol for connecting AI models to external data sources and tools.
 - [Model Context Protocol (MCP) Servers](https://github.com/modelcontextprotocol/servers) - Reference implementations of MCP servers and tooling.
-- [Model Context Protocol (MCP) Apps / UI Extensions](https://github.com/modelcontextprotocol/ext-apps) - SDK for the upcoming MCP Apps / UI extension.
+- [MCP Apps (UI Extension)](https://github.com/modelcontextprotocol/ext-apps) - The official MCP extension for interactive UI: tools return UI resources that render in an iframe inside the host client. Builds on mcp-ui and the OpenAI Apps SDK ([announcement](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/)).
+- [OpenAI Apps SDK](https://developers.openai.com/apps-sdk) - OpenAI. Build apps that render interactive React UI inline in ChatGPT; extends MCP with a UI layer via the MCP Apps bridge.
+- [mcp-ui](https://github.com/idosal/mcp-ui) - Ido Salomon and Liad Yosef. Community SDK (TypeScript, Ruby, Python) for serving interactive UI over MCP; pioneered the pattern that fed the official MCP Apps spec.
+
+### Agent-to-UI Protocols
+
+*Protocols that connect agent backends to front ends and describe the UI that agents emit.*
+
+- [AG-UI (Agent-User Interaction Protocol)](https://github.com/ag-ui-protocol/ag-ui) - CopilotKit. Open, event-based protocol that streams agent activity and shared state to front ends over SSE. Adopted by Google, LangChain, AWS, Microsoft, Mastra, and PydanticAI.
+- [A2UI](https://github.com/google/a2ui) - Google. Declarative, streaming (JSONL) generative-UI spec: agents request allow-listed components that the client renders natively (Flutter, Angular, Lit). A data format, not executable code ([site](https://a2ui.org/)).
+
+### How the Layers Fit Together
+
+These specs are largely complementary rather than competing — they standardize different layers of the same stack:
+
+| Layer                       | What it standardizes                          | Examples                                                 |
+| --------------------------- | --------------------------------------------- | -------------------------------------------------------- |
+| Transport / events          | How agent activity and state stream to the UI | AG-UI                                                    |
+| UI description format       | How the UI itself is described in the payload | A2UI (declarative components), MCP Apps (HTML resources) |
+| In-client rendering surface | Where generated UI renders in a host chat app | MCP Apps, OpenAI Apps SDK, mcp-ui                        |
 
 ---
 
@@ -135,11 +156,14 @@ Google's research (see below) suggests unconstrained generation may become the d
 
 Purpose-built for streaming AI-generated interfaces:
 
-- [Vercel AI SDK](https://sdk.vercel.ai/) - Vercel. TypeScript toolkit with `streamUI()` for server-streamed components and multi-provider support.
+- [Vercel AI SDK](https://sdk.vercel.ai/) - Vercel. TypeScript toolkit with `streamUI()` for server-streamed components and multi-provider support; v5 adds React/Vue/Svelte parity and SSE-based streaming.
 - [Tambo](https://github.com/tambo-ai/tambo) - Generative UI SDK for React, purpose-built for streaming AI-generated components.
 - [Hashbrown](https://github.com/liveloveapp/hashbrown) - Framework for building generative user interfaces in Angular and React.
 - [Cuttlekit](https://cuttlekit.com) - Fully generative UI framework, framework agnostic, optimised for performance and real-time UI generation.
 - [mdocUI](https://github.com/mdocui/mdocui) - Streaming generative UI using Markdoc `{% %}` tag syntax. Framework-agnostic core with React renderer, 24 theme-neutral components, and Zod schema validation.
+- [CopilotKit](https://github.com/CopilotKit/CopilotKit) - Full-stack framework for in-app agents and generative UI across React, Angular, mobile, and Slack; makers of the AG-UI protocol.
+- [assistant-ui](https://github.com/assistant-ui/assistant-ui) - TypeScript/React primitives for AI chat with a first-class generative-UI primitive that renders agent-described components from a consumer-provided allowlist.
+- [Thesys C1](https://www.thesys.dev/) - Thesys. OpenAI-compatible API that returns rendered UI instead of text, paired with the MIT-licensed Crayon React toolkit (built on Radix and shadcn/ui patterns).
 
 ### Supporting Libraries
 
@@ -175,6 +199,10 @@ Building blocks for reliable generation:
 - [Screenshot-to-Code](https://github.com/abi/screenshot-to-code) - Convert screenshots or designs to HTML/React/Vue code.
 - [tldraw make-real](https://makereal.tldraw.com/) - Turn a wireframe into a working React component.
 - [Galileo AI](https://www.usegalileo.ai/) - Generate editable UI designs from text descriptions (commercial, Figma-compatible).
+- [Google Stitch](https://stitch.withgoogle.com/) - Google Labs. Generates web and mobile UI designs plus front-end code from prompts, screenshots, or sketches.
+- [Figma Make](https://www.figma.com/make/) - Figma. Prompt-to-UI inside Figma that builds working interfaces using your existing components and design system.
+- [Magic Patterns](https://www.magicpatterns.com/) - Generate and iterate on React UI from prompts; can learn and apply an existing design system.
+- [Subframe](https://www.subframe.com/) - AI design tool built for code: compose production-ready React/Tailwind components on a canvas and export clean code.
 
 ### MCP Tools for UI
 
@@ -254,6 +282,7 @@ Building blocks for reliable generation:
 
 *Components designed for LLM-powered apps:*
 
+- [AI Elements](https://vercel.com/changelog/introducing-ai-elements) - Vercel. 20+ shadcn/ui-based React components for AI interfaces (message threads, reasoning panels, tool output), integrated with the AI SDK.
 - [LangUI](https://github.com/LangbaseInc/langui) - LangbaseInc. Tailwind components for chat, AI assistants, and LLM projects.
 - [GPT-Vis](https://github.com/antvis/GPT-Vis) - AntV. Visualization components designed for LLM-generated outputs.
 
@@ -284,6 +313,8 @@ Building blocks for reliable generation:
 
 - [Vercel: Introducing AI SDK 3.0 with Generative UI](https://vercel.com/blog/ai-sdk-3-generative-ui) - Vercel blog post introducing Generative UI features in the AI SDK.
 - [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) - Anthropic engineering post on agent design patterns relevant to tool-using UI systems.
+- [Introducing A2UI: An open project for agent-driven interfaces](https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/) - Google Developers blog introducing the A2UI declarative generative-UI spec.
+- [AG-UI Protocol: Bridging Agents to Any Front End](https://www.copilotkit.ai/blog/ag-ui-protocol-bridging-agents-to-any-front-end) - CopilotKit post explaining the agent-to-frontend interaction protocol.
 
 ---
 
