@@ -139,7 +139,7 @@ Purpose-built for streaming AI-generated interfaces:
 - [Tambo](https://github.com/tambo-ai/tambo) - Generative UI SDK for React, purpose-built for streaming AI-generated components.
 - [Hashbrown](https://github.com/liveloveapp/hashbrown) - Framework for building generative user interfaces in Angular and React.
 - [Cuttlekit](https://cuttlekit.com) - Fully generative UI framework, framework agnostic, optimised for performance and real-time UI generation.
-- [mdocUI](https://github.com/mdocui/mdocui) — Streaming generative UI using Markdoc `{% %}` tag syntax. Framework-agnostic core with React renderer, 24 theme-neutral components, and Zod schema validation.
+- [mdocUI](https://github.com/mdocui/mdocui) - Streaming generative UI using Markdoc `{% %}` tag syntax. Framework-agnostic core with React renderer, 24 theme-neutral components, and Zod schema validation.
 
 ### Supporting Libraries
 
