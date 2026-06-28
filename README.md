@@ -164,6 +164,7 @@ Purpose-built for streaming AI-generated interfaces:
 - [CopilotKit](https://github.com/CopilotKit/CopilotKit) - Full-stack framework for in-app agents and generative UI across React, Angular, mobile, and Slack; makers of the AG-UI protocol.
 - [assistant-ui](https://github.com/assistant-ui/assistant-ui) - TypeScript/React primitives for AI chat with a first-class generative-UI primitive that renders agent-described components from a consumer-provided allowlist.
 - [Thesys C1](https://www.thesys.dev/) - Thesys. OpenAI-compatible API that returns rendered UI instead of text, paired with the MIT-licensed Crayon React toolkit (built on Radix and shadcn/ui patterns).
+- [OpenUI Lang (Thesys)](https://github.com/thesysdev/openui) - MIT-licensed, streaming-first DSL and React runtime for model-generated UI; a compact, token-efficient alternative to emitting component JSON.
 
 ### Supporting Libraries
 
@@ -181,7 +182,7 @@ Building blocks for reliable generation:
 *"Describe a component, get code."*
 
 - [v0.dev](https://v0.dev/) - Vercel (commercial). Generate React/Tailwind components from prompts; known for shadcn/ui integration.
-- [OpenUI](https://github.com/wandb/openui) - Weights & Biases. Describe UI in natural language and see it rendered live.
+- [OpenUI (Weights & Biases)](https://github.com/wandb/openui) - Describe UI in natural language and see it rendered live.
 - [openv0](https://github.com/raidendotai/openv0) - Open source v0 clone that generates React/Tailwind components from prompts.
 
 ### App Builders
