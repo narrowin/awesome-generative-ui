@@ -224,7 +224,7 @@ Building blocks for reliable generation:
 
 - [Claude](https://claude.ai/) - Anthropic (commercial). Artifacts generates interactive React/HTML UIs in chat.
 - [ChatGPT](https://chatgpt.com/) - OpenAI (commercial). Canvas supports UI generation and editing.
-- [Vibes DIY](https://vibes.diy/) - Open source. AI app builder that turns a plain-English description into a real, live, shareable web app with generative UI you can remix and collaborate on.
+- [Vibes DIY](https://vibes.diy/) - [Open source](https://github.com/VibesDIY/vibes.diy). AI app builder that turns a plain-English description into a real, live, shareable web app with generative UI you can remix and collaborate on.
 
 ---
 
