@@ -251,6 +251,7 @@ Building blocks for reliable generation:
 - [promptfoo](https://github.com/promptfoo/promptfoo) - Prompt and tool-call regression testing across models.
 - [PyRIT](https://github.com/Azure/PyRIT) - Microsoft. Red teaming toolkit for LLM apps (jailbreaks, prompt injection).
 - [garak](https://github.com/NVIDIA/garak) - NVIDIA. LLM vulnerability scanner for automated probing.
+- [uivet](https://github.com/MaryanPrydatko/uivet) - CI harness for nondeterministic generated UI: samples N generations, renders them headless, checks data fidelity, accessibility (axe-core), layout, and cross-run consistency, and gates regressions against a baseline.
 
 ---
 
