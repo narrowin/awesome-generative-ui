@@ -112,7 +112,7 @@ In practice, the 2025–2026 wave of production systems has leaned the other way
 *Benchmarks for evaluating UI generation and datasets that enable screenshot-to-code, layout understanding, and web-agent interaction.*
 
 - [Design2Code](https://arxiv.org/abs/2403.03163) - Benchmark for converting designs/screenshots into front-end code (Stanford/Google, 2024).
-- [StructEval](https://openreview.net/forum?id=buDwV7LUA7) - Benchmark for LLM generation and conversion across 18 structured formats, including rendered HTML, React, and SVG (TIGER-AI-Lab, 2026).
+- [StructEval](https://arxiv.org/abs/2505.20139) - Benchmark for LLM generation and conversion across 18 structured formats, including rendered HTML, React, and SVG (TIGER-AI-Lab, TMLR 2025).
 - [WebArena](https://github.com/web-arena-x/webarena) - Realistic web environment and benchmark for agents interacting with live websites.
 - [VisualWebArena](https://github.com/web-arena-x/visualwebarena) - Vision-grounded WebArena variant for UI understanding and interaction.
 - [Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) - Dataset and benchmark for generalist web agents grounded in real webpages.
