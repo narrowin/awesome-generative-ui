@@ -225,6 +225,7 @@ Building blocks for reliable generation:
 
 - [Claude](https://claude.ai/) - Anthropic (commercial). Artifacts generates interactive React/HTML UIs in chat.
 - [ChatGPT](https://chatgpt.com/) - OpenAI (commercial). Canvas supports UI generation and editing.
+- [DeepSeek Harness GenUI](https://github.com/pengyue-polaron/deepseek-harness-genui) - Pengyue Polaron. DeepSeek Harness plugin that generates task-specific interfaces and keeps user interactions available to the agent in later turns across chat, Canvas, and CLI.
 
 ---
 
