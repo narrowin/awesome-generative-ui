@@ -166,6 +166,7 @@ Purpose-built for streaming AI-generated interfaces:
 - [assistant-ui](https://github.com/assistant-ui/assistant-ui) - TypeScript/React primitives for AI chat with a first-class generative-UI primitive that renders agent-described components from a consumer-provided allowlist.
 - [Thesys C1](https://www.thesys.dev/) - Thesys. OpenAI-compatible API that returns rendered UI instead of text, paired with the MIT-licensed Crayon React toolkit (built on Radix and shadcn/ui patterns).
 - [OpenUI Lang (Thesys)](https://github.com/thesysdev/openui) - MIT-licensed, streaming-first DSL and React runtime for model-generated UI; a compact, token-efficient alternative to emitting component JSON.
+- [jev-ui](https://github.com/etweisberg/jev-ui) - React components that pick which subtree renders, order lists, and gate affordances from calibrated model judgments rather than generated markup. Experimental.
 
 ### Supporting Libraries
 
