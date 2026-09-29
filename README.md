@@ -237,7 +237,7 @@ Building blocks for reliable generation:
 
 - [Claude](https://claude.ai/) - Anthropic (commercial). Artifacts generates interactive React/HTML UIs in chat.
 - [ChatGPT](https://chatgpt.com/) - OpenAI (commercial). Canvas supports UI generation and editing.
-- [Gemini](https://gemini.google.com/) - Google (commercial). Dynamic view and visual layout generate a custom interactive interface per prompt; also available in Google Search AI Mode.
+- [Gemini](https://gemini.google/overview/) - Google (commercial). Dynamic view and visual layout generate a custom interactive interface per prompt; also available in Google Search AI Mode.
 
 ---
 
