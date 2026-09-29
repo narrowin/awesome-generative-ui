@@ -173,6 +173,7 @@ Building blocks for reliable generation:
 
 - [Instructor](https://github.com/jxnl/instructor) - Structured output extraction; useful with UI schemas for reliable generation.
 - [Mitosis](https://github.com/BuilderIO/mitosis) - Builder.io. Write components once and compile to React/Vue/Svelte/etc.
+- [DeepSeek Harness GenUI](https://github.com/pengyue-polaron/deepseek-harness-genui) - PengYue. Community DeepSeek Harness plugin where the agent writes task-specific React UIs whose user inputs carry into later agent turns.
 
 ---
 
