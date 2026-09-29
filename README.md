@@ -173,6 +173,7 @@ Building blocks for reliable generation:
 
 - [Instructor](https://github.com/jxnl/instructor) - Structured output extraction; useful with UI schemas for reliable generation.
 - [Mitosis](https://github.com/BuilderIO/mitosis) - Builder.io. Write components once and compile to React/Vue/Svelte/etc.
+- [DeepSeek Harness GenUI](https://github.com/pengyue-polaron/deepseek-harness-genui) - PengYue. Community DeepSeek Harness plugin where the agent writes task-specific React UIs whose user inputs carry into later agent turns.
 
 ---
 
@@ -225,7 +226,6 @@ Building blocks for reliable generation:
 
 - [Claude](https://claude.ai/) - Anthropic (commercial). Artifacts generates interactive React/HTML UIs in chat.
 - [ChatGPT](https://chatgpt.com/) - OpenAI (commercial). Canvas supports UI generation and editing.
-- [DeepSeek Harness GenUI](https://github.com/pengyue-polaron/deepseek-harness-genui) - Pengyue Polaron. DeepSeek Harness plugin that generates task-specific interfaces and keeps user interactions available to the agent in later turns across chat, Canvas, and CLI.
 
 ---
 
