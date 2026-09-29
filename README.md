@@ -45,6 +45,16 @@ Generative UI enables **personalization at scale**, **rapid prototyping**, and *
 
 Challenges include **Consistency** (generated UIs may look different each time), **Performance** (generation takes time; streaming helps), **Safety** (arbitrary code generation has security implications), and **Hallucination** (AI might generate components that don't exist).
 
+### How the Field Evolved
+
+**2023–2024: framework-bound streaming.** Vercel's AI SDK 3.0 popularized the term with `streamUI()`: a model calls a tool, the server streams back a React Server Component. Powerful, but tied to one framework and one vendor's runtime.
+
+**2024–2025: prompt-to-app products.** v0, Bolt.new, Lovable, and Google Stitch made "describe it, get a UI" a product category, while Google's research argued that models can generate full HTML/CSS/JS at runtime without UI-specific training.
+
+**Late 2025–mid 2026: standardization into layers.** The stack split into interoperable specs: AG-UI for streaming agent events, A2UI and OpenUI Lang for describing UI, and MCP Apps (plus OpenAI's Apps SDK) as the shared surface for rendering UI inside chat hosts. Production systems mostly settled on constrained, allow-listed components.
+
+**Late 2026: consolidation.** SDKs are moving from React-first to first-class Vue, Svelte, and Angular support, specs are heading toward stable 1.0 releases, and models are starting to be trained specifically to emit UI description languages. Meanwhile unconstrained generation has shipped to consumers in Gemini and Google Search, so both ends of the spectrum are now in production.
+
 ---
 
 ## Key Concepts
@@ -82,7 +92,7 @@ A fundamental design decision in generative UI systems:
 
 | Approach          | Description                           | Examples                                                              |
 | ----------------- | ------------------------------------- | --------------------------------------------------------------------- |
-| **Constrained**   | AI selects from registered components | Vercel AI SDK `streamUI()`, A2UI, Crayon, assistant-ui, Tambo, v0.dev |
+| **Constrained**   | AI selects from registered components | A2UI, OpenUI, assistant-ui, Tambo, CopilotKit, Vercel AI SDK UI       |
 | **Unconstrained** | AI generates raw HTML/CSS/JS directly | Google GenUI research, Claude Artifacts, MCP Apps, OpenAI Canvas      |
 
 **Constrained systems** are safer and more consistent — the AI can only use pre-approved components with known behavior. Trade-off: less flexible, requires component development upfront.
@@ -91,7 +101,7 @@ A fundamental design decision in generative UI systems:
 
 Google's research (see below) suggests unconstrained generation may become the dominant approach as models improve. They found users preferred AI-generated HTML/CSS over markdown 83% of the time, calling it an "emergent capability" — models produce good UIs without UI-specific training.
 
-In practice, the 2025–2026 wave of production systems has leaned the other way. AG-UI, Google's own A2UI spec, the MCP Apps extension, and SDKs like Crayon and assistant-ui all standardize on *constrained / declarative* output — agents emit allow-listed components rather than raw code — for safety and consistency. Both ends of the spectrum are advancing in parallel rather than one cleanly winning.
+In practice, the 2025–2026 wave of developer tooling has mostly leaned the other way. Google's own A2UI spec and SDKs like OpenUI, assistant-ui, and CopilotKit standardize on *constrained / declarative* output — agents emit allow-listed components rather than raw code — for safety and consistency, while MCP Apps contains unconstrained HTML in sandboxed iframes. Both ends of the spectrum are advancing in parallel rather than one cleanly winning (see [How the Field Evolved](#how-the-field-evolved)).
 
 ---
 
@@ -100,7 +110,6 @@ In practice, the 2025–2026 wave of production systems has leaned the other way
 ### Papers
 
 - [Generative UI: LLMs are Effective UI Generators](https://generativeui.github.io/static/pdfs/paper.pdf) - Google (2025). Foundational paper making the case for unconstrained UI generation. Key findings: (1) Users preferred AI-generated HTML/CSS/JS over markdown 83% of the time, (2) UI generation is an "emergent capability" requiring no UI-specific training, (3) Vision of "infinite ephemeral interfaces" - every query gets a custom UI. ([Project page](https://generativeui.github.io/)).
-- [WebArena: A Realistic Web Environment for Building Autonomous Agents](https://arxiv.org/abs/2307.13854) - CMU (2023). Framework for evaluating web agents, relevant to UI generation and interaction.
 - [Pix2Struct: Screenshot Parsing as Pretraining for Visual Language Understanding](https://arxiv.org/abs/2210.03347) - Google (2023). Vision-language model pretrained on web screenshots. Foundation for screenshot-to-code approaches.
 
 *Note: Generative UI is an emerging field. Much knowledge lives in blog posts, SDKs, and industry practice rather than academic papers.*
@@ -129,15 +138,15 @@ In practice, the 2025–2026 wave of production systems has leaned the other way
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) - Anthropic. Protocol for connecting AI models to external data sources and tools.
 - [Model Context Protocol (MCP) Servers](https://github.com/modelcontextprotocol/servers) - Reference implementations of MCP servers and tooling.
 - [MCP Apps (UI Extension)](https://github.com/modelcontextprotocol/ext-apps) - The official MCP extension for interactive UI: tools return UI resources that render in an iframe inside the host client. Builds on mcp-ui and the OpenAI Apps SDK ([announcement](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/)).
-- [OpenAI Apps SDK](https://developers.openai.com/apps-sdk) - OpenAI. Build apps that render interactive React UI inline in ChatGPT; extends MCP with a UI layer via the MCP Apps bridge.
-- [mcp-ui](https://github.com/idosal/mcp-ui) - Ido Salomon and Liad Yosef. Community SDK (TypeScript, Ruby, Python) for serving interactive UI over MCP; pioneered the pattern that fed the official MCP Apps spec.
+- [OpenAI Apps SDK / ChatGPT Plugins](https://developers.openai.com/plugins) - OpenAI. Build plugins (called ChatGPT apps until July 2026) that render interactive UI inline in ChatGPT; extends MCP with a UI layer via the MCP Apps bridge.
+- [mcp-ui](https://github.com/MCP-UI-Org/mcp-ui) - Ido Salomon and Liad Yosef. Community SDK (TypeScript, Ruby, Python) for serving interactive UI over MCP; pioneered the pattern that fed the official MCP Apps spec.
 
 ### Agent-to-UI Protocols
 
 *Protocols that connect agent backends to front ends and describe the UI that agents emit.*
 
 - [AG-UI (Agent-User Interaction Protocol)](https://github.com/ag-ui-protocol/ag-ui) - CopilotKit. Open, event-based protocol that streams agent activity and shared state to front ends over SSE. Adopted by Google, LangChain, AWS, Microsoft, Mastra, and PydanticAI.
-- [A2UI](https://github.com/google/a2ui) - Google. Declarative, streaming (JSONL) generative-UI spec: agents request allow-listed components that the client renders natively (Flutter, Angular, Lit). A data format, not executable code ([site](https://a2ui.org/)).
+- [A2UI](https://github.com/a2ui-project/a2ui) - Google. Declarative, streaming (JSONL) generative-UI spec: agents request allow-listed components that the client renders natively (Flutter, Angular, Lit). A data format, not executable code ([site](https://a2ui.org/)).
 
 ### How the Layers Fit Together
 
@@ -147,7 +156,7 @@ These specs are largely complementary rather than competing — they standardize
 | --------------------------- | --------------------------------------------- | -------------------------------------------------------- |
 | Transport / events          | How agent activity and state stream to the UI | AG-UI                                                    |
 | UI description format       | How the UI itself is described in the payload | A2UI (declarative components), MCP Apps (HTML resources) |
-| In-client rendering surface | Where generated UI renders in a host chat app | MCP Apps, OpenAI Apps SDK, mcp-ui                        |
+| In-client rendering surface | Where generated UI renders in a host chat app | MCP Apps, OpenAI Apps SDK (plugins), mcp-ui              |
 
 ---
 
@@ -157,22 +166,20 @@ These specs are largely complementary rather than competing — they standardize
 
 Purpose-built for streaming AI-generated interfaces:
 
-- [Vercel AI SDK](https://sdk.vercel.ai/) - Vercel. TypeScript toolkit with `streamUI()` for server-streamed components and multi-provider support; v5 adds React/Vue/Svelte parity and SSE-based streaming.
+- [Vercel AI SDK](https://ai-sdk.dev/) - Vercel. Multi-provider TypeScript toolkit for React, Vue, Svelte, and Angular; generative UI is built by rendering typed tool results on the client ([guide](https://ai-sdk.dev/docs/ai-sdk-ui/generative-user-interfaces)). The original RSC-based `streamUI()` is experimental.
 - [Tambo](https://github.com/tambo-ai/tambo) - Generative UI SDK for React, purpose-built for streaming AI-generated components.
 - [Hashbrown](https://github.com/liveloveapp/hashbrown) - Framework for building generative user interfaces in Angular and React.
 - [Cuttlekit](https://cuttlekit.com) - Fully generative UI framework, framework agnostic, optimised for performance and real-time UI generation.
 - [mdocUI](https://github.com/mdocui/mdocui) - Streaming generative UI using Markdoc `{% %}` tag syntax. Framework-agnostic core with React renderer, 24 theme-neutral components, and Zod schema validation.
 - [CopilotKit](https://github.com/CopilotKit/CopilotKit) - Full-stack framework for in-app agents and generative UI across React, Angular, mobile, and Slack; makers of the AG-UI protocol.
 - [assistant-ui](https://github.com/assistant-ui/assistant-ui) - TypeScript/React primitives for AI chat with a first-class generative-UI primitive that renders agent-described components from a consumer-provided allowlist.
-- [Thesys C1](https://www.thesys.dev/) - Thesys. OpenAI-compatible API that returns rendered UI instead of text, paired with the MIT-licensed Crayon React toolkit (built on Radix and shadcn/ui patterns).
-- [OpenUI Lang (Thesys)](https://github.com/thesysdev/openui) - MIT-licensed, streaming-first DSL and React runtime for model-generated UI; a compact, token-efficient alternative to emitting component JSON.
+- [OpenUI (Thesys)](https://github.com/thesysdev/openui) - Thesys. MIT-licensed generative UI framework built around OpenUI Lang, a compact streaming DSL for model-generated component trees, with runtimes for React, Vue, Svelte, and Angular. Also powers the commercial [C1](https://www.thesys.dev/) API.
 
 ### Supporting Libraries
 
 Building blocks for reliable generation:
 
-- [Instructor](https://github.com/jxnl/instructor) - Structured output extraction; useful with UI schemas for reliable generation.
-- [Mitosis](https://github.com/BuilderIO/mitosis) - Builder.io. Write components once and compile to React/Vue/Svelte/etc.
+- [Instructor](https://github.com/567-labs/instructor) - Structured output extraction; useful with UI schemas for reliable generation.
 - [DeepSeek Harness GenUI](https://github.com/pengyue-polaron/deepseek-harness-genui) - PengYue. Community DeepSeek Harness plugin where the agent writes task-specific React UIs whose user inputs carry into later agent turns.
 
 ---
@@ -183,9 +190,8 @@ Building blocks for reliable generation:
 
 *"Describe a component, get code."*
 
-- [v0.dev](https://v0.dev/) - Vercel (commercial). Generate React/Tailwind components from prompts; known for shadcn/ui integration.
+- [v0](https://v0.app/) - Vercel (commercial). Generate React/Tailwind components from prompts; known for shadcn/ui integration.
 - [OpenUI (Weights & Biases)](https://github.com/wandb/openui) - Describe UI in natural language and see it rendered live.
-- [openv0](https://github.com/raidendotai/openv0) - Open source v0 clone that generates React/Tailwind components from prompts.
 
 ### App Builders
 
@@ -193,7 +199,6 @@ Building blocks for reliable generation:
 
 - [Bolt.new](https://bolt.new/) - StackBlitz (commercial). Generate full-stack applications in-browser with live preview.
 - [Lovable](https://lovable.dev/) - Generate and deploy web apps from descriptions (commercial).
-- [Cofounder](https://github.com/raidendotai/cofounder) - Open source full-stack app generator with generative UI, databases, and APIs.
 
 ### Design-to-Code
 
@@ -201,7 +206,6 @@ Building blocks for reliable generation:
 
 - [Screenshot-to-Code](https://github.com/abi/screenshot-to-code) - Convert screenshots or designs to HTML/React/Vue code.
 - [tldraw make-real](https://makereal.tldraw.com/) - Turn a wireframe into a working React component.
-- [Galileo AI](https://www.usegalileo.ai/) - Generate editable UI designs from text descriptions (commercial, Figma-compatible).
 - [Google Stitch](https://stitch.withgoogle.com/) - Google Labs. Generates web and mobile UI designs plus front-end code from prompts, screenshots, or sketches.
 - [Figma Make](https://www.figma.com/make/) - Figma. Prompt-to-UI inside Figma that builds working interfaces using your existing components and design system.
 - [Magic Patterns](https://www.magicpatterns.com/) - Generate and iterate on React UI from prompts; can learn and apply an existing design system.
@@ -215,7 +219,7 @@ Building blocks for reliable generation:
 - [21st.dev Magic MCP](https://github.com/21st-dev/magic-mcp) - 21st.dev. Generate UI components from prompts with design-system awareness.
 - [shadcn-ui-mcp-server](https://github.com/Jpisnice/shadcn-ui-mcp-server) - Jpisnice. Helps LLMs understand shadcn/ui component structure.
 - [MUI MCP](https://mui.com/x/introduction/mcp/) - MUI. MCP server for MUI docs and code examples, published as `@mui/mcp` ([npm](https://www.npmjs.com/package/@mui/mcp)).
-- [Storybook MCP](https://github.com/storybookjs/mcp) - Storybook. MCP server and addon that exposes component information and workflows from your local Storybook ([npm](https://www.npmjs.com/package/@storybook/mcp)).
+- [Storybook MCP](https://storybook.js.org/docs/ai/mcp/overview) - Storybook. MCP server and addon that exposes component information and workflows from your local Storybook; part of Storybook core since v10.6 ([npm](https://www.npmjs.com/package/@storybook/mcp)).
 - [Cursor Talk to Figma MCP](https://github.com/grab/cursor-talk-to-figma-mcp) - Grab. MCP server + Figma plugin for reading and modifying Figma designs.
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp) - Microsoft. MCP server for browser automation and UI regression testing workflows.
 - [shadcn-vue-mcp](https://github.com/HelloGGX/shadcn-vue-mcp) - HelloGGX. MCP server for shadcn-vue component knowledge.
@@ -233,7 +237,7 @@ Building blocks for reliable generation:
 
 *When UIs (or UI code) are model-generated, treat outputs as untrusted. These resources cover browser sandboxing, sanitization, and LLM-app security pitfalls.*
 
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - OWASP. Threat model checklist for LLM apps (prompt injection, insecure tool use, data leakage).
+- [OWASP Top 10 for LLM Applications](https://owasp.org/projects/top-10-for-large-language-model-applications) - OWASP. Threat model checklist for LLM apps (prompt injection, insecure tool use, data leakage).
 - [OWASP Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html) - OWASP. Practical mitigations for prompt/tool injection in production systems.
 - [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) - MDN. Core browser control for limiting script execution and exfiltration.
 - [iframe sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) - MDN. Reference for sandboxed iframes to contain untrusted HTML/JS UI previews.
@@ -251,7 +255,7 @@ Building blocks for reliable generation:
 - [Playwright](https://playwright.dev/) - Microsoft. E2E testing and screenshot diffs for UI regression testing.
 - [Storybook Test Runner](https://storybook.js.org/docs/writing-tests/integrations/test-runner) - Storybook. Automates component-level interaction testing.
 - [promptfoo](https://github.com/promptfoo/promptfoo) - Prompt and tool-call regression testing across models.
-- [PyRIT](https://github.com/Azure/PyRIT) - Microsoft. Red teaming toolkit for LLM apps (jailbreaks, prompt injection).
+- [PyRIT](https://github.com/microsoft/PyRIT) - Microsoft. Red teaming toolkit for LLM apps (jailbreaks, prompt injection).
 - [garak](https://github.com/NVIDIA/garak) - NVIDIA. LLM vulnerability scanner for automated probing.
 
 ---
@@ -265,7 +269,6 @@ Building blocks for reliable generation:
 - [Zod](https://github.com/colinhacks/zod) - Colin Hacks. TypeScript schema validation for enforcing output shapes at runtime.
 - [Outlines](https://github.com/dottxt-ai/outlines) - Structured generation with JSON/grammar constraints.
 - [Guidance](https://github.com/guidance-ai/guidance) - Grammar- and constraint-oriented prompting for structured outputs.
-- [Vercel AI SDK](https://sdk.vercel.ai/docs) - Vercel. Streaming UI and tool-calling patterns for generative UI applications.
 - [shadcn/ui Registry](https://ui.shadcn.com/docs/registry) - Component registry pattern commonly targeted by UI generators.
 
 ---
@@ -278,7 +281,7 @@ Building blocks for reliable generation:
 
 - [shadcn/ui](https://ui.shadcn.com/) - Copy-paste components that many generators target.
 - [Radix UI](https://www.radix-ui.com/) - Radix. Unstyled primitives that shadcn/ui builds on.
-- [Tremor](https://tremor.so/) - Dashboard components often used for generated data UIs.
+- [Tremor](https://www.tremor.so/) - Dashboard components often used for generated data UIs.
 - [React Native Paper](https://reactnativepaper.com/) - Material Design components for React Native.
 
 ### For Building AI/Chat Interfaces
@@ -286,7 +289,6 @@ Building blocks for reliable generation:
 *Components designed for LLM-powered apps:*
 
 - [AI Elements](https://vercel.com/changelog/introducing-ai-elements) - Vercel. 20+ shadcn/ui-based React components for AI interfaces (message threads, reasoning panels, tool output), integrated with the AI SDK.
-- [LangUI](https://github.com/LangbaseInc/langui) - LangbaseInc. Tailwind components for chat, AI assistants, and LLM projects.
 - [GPT-Vis](https://github.com/antvis/GPT-Vis) - AntV. Visualization components designed for LLM-generated outputs.
 - [Markstream](https://github.com/Simon-He95/markstream-vue) - Multi-framework streaming Markdown components for AI chat, with Mermaid, KaTeX, code highlighting, safe HTML, and SSR support.
 
@@ -305,11 +307,8 @@ Building blocks for reliable generation:
 
 ### Open Source
 
-- [ai-chatbot](https://github.com/vercel/ai-chatbot) - Vercel. Full-featured chatbot with generative UI using the AI SDK.
+- [Chatbot](https://github.com/vercel/chatbot) - Vercel. Full-featured chatbot with generative UI using the AI SDK.
 - [morphic](https://github.com/miurla/morphic) - AI-powered search engine with generative answer UI.
-- [langgraphjs-gen-ui-examples](https://github.com/langchain-ai/langgraphjs-gen-ui-examples) - LangChain. Collection of generative UI agents built with LangGraph.js.
-- [gen-ui](https://github.com/bracesproul/gen-ui) - Reference implementation for generative UI with LangChain.js, AI SDK, and Next.js.
-- [termite](https://github.com/shobrook/termite) - Terminal-based generative UI.
 
 ---
 
@@ -328,14 +327,14 @@ Building blocks for reliable generation:
 
 Design-to-code converts designs (e.g., Figma) to code. Code generation is the broader field of AI-generated code. Conversational UI covers chat interfaces (related but distinct). Low-code/no-code includes visual builders that generative UI can automate.
 
-- [LangChain.js](https://js.langchain.com/) - LangChain. LLM framework often used to build tool-using agents that can drive generative UI.
+- [LangChain.js](https://docs.langchain.com/oss/javascript/langchain/overview) - LangChain. LLM framework often used to build tool-using agents that can drive generative UI.
 - [Mastra](https://mastra.ai/) - TypeScript framework for AI applications with patterns adaptable to generative UI.
 
 ### Evaluation tooling (adjacent)
 
 - [OpenAI Evals](https://github.com/openai/evals) - OpenAI. Framework for evaluating model outputs with custom tasks and graders.
 - [TruLens](https://github.com/truera/trulens) - TruEra. Evaluation and feedback tooling for LLM applications.
-- [LangSmith Evaluation](https://docs.smith.langchain.com/evaluation) - LangChain. Evaluation patterns and workflows for LLM apps.
+- [LangSmith Evaluation](https://docs.langchain.com/langsmith/evaluation-concepts) - LangChain. Evaluation patterns and workflows for LLM apps.
 
 ### Standards & Formats
 
