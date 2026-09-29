@@ -90,10 +90,10 @@ Using JSON schemas or function calling to ensure AI outputs valid, parseable UI 
 
 A fundamental design decision in generative UI systems:
 
-| Approach          | Description                           | Examples                                                              |
-| ----------------- | ------------------------------------- | --------------------------------------------------------------------- |
-| **Constrained**   | AI selects from registered components | A2UI, OpenUI, assistant-ui, Tambo, CopilotKit, Vercel AI SDK UI       |
-| **Unconstrained** | AI generates raw HTML/CSS/JS directly | Google GenUI research, Claude Artifacts, MCP Apps, OpenAI Canvas      |
+| Approach          | Description                           | Examples                                                               |
+| ----------------- | ------------------------------------- | ---------------------------------------------------------------------- |
+| **Constrained**   | AI selects from registered components | A2UI, OpenUI, assistant-ui, Tambo, CopilotKit, Vercel AI SDK UI        |
+| **Unconstrained** | AI generates raw HTML/CSS/JS directly | Google GenUI research, Gemini dynamic view, Claude Artifacts, MCP Apps |
 
 **Constrained systems** are safer and more consistent — the AI can only use pre-approved components with known behavior. Trade-off: less flexible, requires component development upfront.
 
@@ -122,11 +122,15 @@ In practice, the 2025–2026 wave of developer tooling has mostly leaned the oth
 
 - [Design2Code](https://arxiv.org/abs/2403.03163) - Benchmark for converting designs/screenshots into front-end code (Stanford/Google, 2024).
 - [StructEval](https://arxiv.org/abs/2505.20139) - Benchmark for LLM generation and conversion across 18 structured formats, including rendered HTML, React, and SVG (TIGER-AI-Lab, TMLR 2025).
+- [ArtifactsBench](https://arxiv.org/abs/2507.04952) - Benchmark of 1,825 tasks for generating visual, interactive artifacts (web apps, SVG, games), scored by an MLLM judge from rendered screenshots (Tencent Hunyuan, 2025).
+- [Interaction2Code](https://arxiv.org/abs/2411.03292) - Benchmark for generating interactive webpages from interactive prototypes rather than static designs (ASE 2025).
+- [WebDev Arena](https://arena.ai/leaderboard/webdev) - LMArena. Crowd-voted leaderboard where models build web apps side by side.
 - [WebArena](https://github.com/web-arena-x/webarena) - Realistic web environment and benchmark for agents interacting with live websites.
 - [VisualWebArena](https://github.com/web-arena-x/visualwebarena) - Vision-grounded WebArena variant for UI understanding and interaction.
 - [Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) - Dataset and benchmark for generalist web agents grounded in real webpages.
 - [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) - Standard suite of web UI interaction tasks used for agent evaluation.
 - [RICO](https://www.interactionmining.org/archive/rico) - Large-scale dataset of mobile app UIs (screens + view hierarchies).
+- [WebSight](https://huggingface.co/datasets/HuggingFaceM4/WebSight) - Synthetic dataset of 2M websites paired with screenshots for screenshot-to-code training (Hugging Face, 2024; [paper](https://arxiv.org/abs/2403.09029)).
 - [pix2code](https://arxiv.org/abs/1705.07962) - Early reference paper on UI screenshot-to-code generation (Tony Beltramelli, 2017).
 
 ---
@@ -140,6 +144,7 @@ In practice, the 2025–2026 wave of developer tooling has mostly leaned the oth
 - [MCP Apps (UI Extension)](https://github.com/modelcontextprotocol/ext-apps) - The official MCP extension for interactive UI: tools return UI resources that render in an iframe inside the host client. Builds on mcp-ui and the OpenAI Apps SDK ([announcement](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/)).
 - [OpenAI Apps SDK / ChatGPT Plugins](https://developers.openai.com/plugins) - OpenAI. Build plugins (called ChatGPT apps until July 2026) that render interactive UI inline in ChatGPT; extends MCP with a UI layer via the MCP Apps bridge.
 - [mcp-ui](https://github.com/MCP-UI-Org/mcp-ui) - Ido Salomon and Liad Yosef. Community SDK (TypeScript, Ruby, Python) for serving interactive UI over MCP; pioneered the pattern that fed the official MCP Apps spec.
+- [Adaptive Cards](https://adaptivecards.microsoft.com/) - Microsoft. Platform-agnostic JSON card format rendered natively by host apps such as Teams and Outlook; a long-standing precursor to declarative agent UI specs.
 
 ### Agent-to-UI Protocols
 
@@ -168,7 +173,9 @@ Purpose-built for streaming AI-generated interfaces:
 
 - [Vercel AI SDK](https://ai-sdk.dev/) - Vercel. Multi-provider TypeScript toolkit for React, Vue, Svelte, and Angular; generative UI is built by rendering typed tool results on the client ([guide](https://ai-sdk.dev/docs/ai-sdk-ui/generative-user-interfaces)). The original RSC-based `streamUI()` is experimental.
 - [Tambo](https://github.com/tambo-ai/tambo) - Generative UI SDK for React, purpose-built for streaming AI-generated components.
+- [json-render](https://github.com/vercel-labs/json-render) - Vercel Labs. Apache-2.0 framework where models emit JSON constrained to a catalog of predefined components and actions, with renderers for React, React Native, Vue, Svelte, and Solid plus PDF, email, and video targets.
 - [Hashbrown](https://github.com/liveloveapp/hashbrown) - Framework for building generative user interfaces in Angular and React.
+- [GenUI SDK for Flutter](https://github.com/flutter/genui) - Flutter. Composes UIs from your existing widget catalog and feeds UI state back to the agent; supports A2UI. Experimental.
 - [Cuttlekit](https://cuttlekit.com) - Fully generative UI framework, framework agnostic, optimised for performance and real-time UI generation.
 - [mdocUI](https://github.com/mdocui/mdocui) - Streaming generative UI using Markdoc `{% %}` tag syntax. Framework-agnostic core with React renderer, 24 theme-neutral components, and Zod schema validation.
 - [CopilotKit](https://github.com/CopilotKit/CopilotKit) - Full-stack framework for in-app agents and generative UI across React, Angular, mobile, and Slack; makers of the AG-UI protocol.
@@ -230,6 +237,7 @@ Building blocks for reliable generation:
 
 - [Claude](https://claude.ai/) - Anthropic (commercial). Artifacts generates interactive React/HTML UIs in chat.
 - [ChatGPT](https://chatgpt.com/) - OpenAI (commercial). Canvas supports UI generation and editing.
+- [Gemini](https://gemini.google.com/) - Google (commercial). Dynamic view and visual layout generate a custom interactive interface per prompt; also available in Google Search AI Mode.
 
 ---
 
@@ -289,6 +297,7 @@ Building blocks for reliable generation:
 *Components designed for LLM-powered apps:*
 
 - [AI Elements](https://vercel.com/changelog/introducing-ai-elements) - Vercel. 20+ shadcn/ui-based React components for AI interfaces (message threads, reasoning panels, tool output), integrated with the AI SDK.
+- [ChatKit](https://github.com/openai/chatkit-js) - OpenAI. Embeddable chat UI framework with streaming, tool visualization, and agent-rendered interactive widgets.
 - [GPT-Vis](https://github.com/antvis/GPT-Vis) - AntV. Visualization components designed for LLM-generated outputs.
 - [Markstream](https://github.com/Simon-He95/markstream-vue) - Multi-framework streaming Markdown components for AI chat, with Mermaid, KaTeX, code highlighting, safe HTML, and SSR support.
 
@@ -315,9 +324,12 @@ Building blocks for reliable generation:
 ## Articles & Talks
 
 - [Vercel: Introducing AI SDK 3.0 with Generative UI](https://vercel.com/blog/ai-sdk-3-generative-ui) - Vercel blog post introducing Generative UI features in the AI SDK.
+- [Generative UI: A rich, custom, visual interactive user experience for any prompt](https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/) - Google Research post on shipping unconstrained generative UI in the Gemini app and Google Search (2025).
+- [Enabling teachers to create learning interactives with generative UI](https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/) - Google Research on generative UI with learning-design guardrails for classroom simulations (2026).
 - [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) - Anthropic engineering post on agent design patterns relevant to tool-using UI systems.
 - [Introducing A2UI: An open project for agent-driven interfaces](https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/) - Google Developers blog introducing the A2UI declarative generative-UI spec.
 - [AG-UI Protocol: Bridging Agents to Any Front End](https://www.copilotkit.ai/blog/ag-ui-protocol-bridging-agents-to-any-front-end) - CopilotKit post explaining the agent-to-frontend interaction protocol.
+- [The Developer's Guide to Generative UI in 2026](https://www.copilotkit.ai/blog/the-developer-s-guide-to-generative-ui-in-2026) - CopilotKit overview of static, declarative, and open-ended generative UI and how the protocols fit together.
 
 ---
 
