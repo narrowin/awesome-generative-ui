@@ -10,6 +10,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 2. **Quality Threshold**
    - Tools/Frameworks: Should be functional, documented, and either actively maintained or historically significant
+   - Tools/Frameworks: The project must be at least 30 days old (first public commit or release) and have a tagged release at the time of submission
    - Research: Should be from reputable sources (academic, major tech companies, well-known practitioners)
    - Articles: Should provide substantial insight, not just surface-level overviews
 

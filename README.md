@@ -348,7 +348,7 @@ Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md
 
 ### Criteria for Inclusion
 
-Submissions should be relevant to generative UI (not general AI/LLM), high quality (well-documented and maintained or historically significant), and accessible (open source, free tier, or detailed documentation).
+Submissions should be relevant to generative UI (not general AI/LLM), high quality (well-documented and maintained or historically significant; tools and frameworks at least 30 days old with a tagged release), and accessible (open source, free tier, or detailed documentation).
 
 ### What We're Looking For
 
