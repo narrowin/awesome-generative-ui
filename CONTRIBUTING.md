@@ -24,6 +24,12 @@ Thank you for your interest in contributing! This document provides guidelines f
 - Vaporware or pre-announcement products
 - Duplicates of existing entries
 
+### Keeping the List Current
+
+- Entries whose repository is archived, or that have had no activity for 12 months, are removed during periodic reviews.
+- Exceptions are resources that shaped the field (e.g., the first project to introduce a pattern). These stay and are marked *(archived)* at the end of the description.
+- Moved or renamed projects are updated in place rather than removed.
+
 ## How to Contribute
 
 ### Quick Additions
