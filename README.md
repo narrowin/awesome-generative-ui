@@ -189,6 +189,12 @@ Building blocks for reliable generation:
 - [Instructor](https://github.com/567-labs/instructor) - Structured output extraction; useful with UI schemas for reliable generation.
 - [DeepSeek Harness GenUI](https://github.com/pengyue-polaron/deepseek-harness-genui) - PengYue. Community DeepSeek Harness plugin where the agent writes task-specific React UIs whose user inputs carry into later agent turns.
 
+### Models
+
+Models trained specifically to generate UI:
+
+- [OUI-1](https://huggingface.co/thesysdev/OUI-1) - Thesys. Apache-2.0 diffusion model (DiffusionGemma finetune, 4B active parameters) that writes UI screens in OpenUI Lang from a component library and a plain-language brief, in about a second per screen.
+
 ---
 
 ## Tools & Platforms
