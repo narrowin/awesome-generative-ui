@@ -306,6 +306,7 @@ Models trained specifically to generate UI:
 - [ChatKit](https://github.com/openai/chatkit-js) - OpenAI. Embeddable chat UI framework with streaming, tool visualization, and agent-rendered interactive widgets.
 - [GPT-Vis](https://github.com/antvis/GPT-Vis) - AntV. Visualization components designed for LLM-generated outputs.
 - [Markstream](https://github.com/Simon-He95/markstream-vue) - Multi-framework streaming Markdown components for AI chat, with Mermaid, KaTeX, code highlighting, safe HTML, and SSR support.
+- [Pasta UI](https://pastaui.com/) - MIT-licensed shadcn/ui registry of 50+ React components for agent interfaces: prompt input, tool approvals, tool timelines, reasoning text, citations and file diffs.
 
 ### Visualization
 
