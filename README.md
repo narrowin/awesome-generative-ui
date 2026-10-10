@@ -174,6 +174,7 @@ Purpose-built for streaming AI-generated interfaces:
 - [Vercel AI SDK](https://ai-sdk.dev/) - Vercel. Multi-provider TypeScript toolkit for React, Vue, Svelte, and Angular; generative UI is built by rendering typed tool results on the client ([guide](https://ai-sdk.dev/docs/ai-sdk-ui/generative-user-interfaces)). The original RSC-based `streamUI()` is experimental.
 - [Tambo](https://github.com/tambo-ai/tambo) - Generative UI SDK for React, purpose-built for streaming AI-generated components.
 - [json-render](https://github.com/vercel-labs/json-render) - Vercel Labs. Apache-2.0 framework where models emit JSON constrained to a catalog of predefined components and actions, with renderers for React, React Native, Vue, Svelte, and Solid plus PDF, email, and video targets.
+- [ngx-json-render](https://github.com/shteynu/ngx-json-render) - Angular renderer for json-render: streams catalog-constrained JSON specs into real Angular components with signals; optional Angular Material catalog.
 - [Hashbrown](https://github.com/liveloveapp/hashbrown) - Framework for building generative user interfaces in Angular and React.
 - [GenUI SDK for Flutter](https://github.com/flutter/genui) - Flutter. Composes UIs from your existing widget catalog and feeds UI state back to the agent; supports A2UI. Experimental.
 - [Cuttlekit](https://cuttlekit.com) - Fully generative UI framework, framework agnostic, optimised for performance and real-time UI generation.
@@ -257,6 +258,7 @@ Models trained specifically to generate UI:
 - [iframe sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) - MDN. Reference for sandboxed iframes to contain untrusted HTML/JS UI previews.
 - [Trusted Types](https://web.dev/articles/trusted-types) - Mitigation against DOM XSS when inserting generated HTML into the DOM.
 - [DOMPurify](https://github.com/cure53/DOMPurify) - Widely used HTML sanitizer for untrusted/generated markup.
+- [render-policy](https://github.com/shteynu/render-policy) - Renders agent-generated Markdown/HTML without innerHTML: DOMPurify into a fragment plus a policy for image hosts, links, and Trusted Types; Angular, React, and A2UI adapters.
 - [Sandpack](https://github.com/codesandbox/sandpack) - CodeSandbox. In-browser code sandboxing patterns for safe previews.
 - [E2B](https://github.com/e2b-dev/e2b) - Sandboxed code execution environments for running untrusted generated code.
 
