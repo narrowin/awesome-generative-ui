@@ -306,6 +306,7 @@ Models trained specifically to generate UI:
 
 - [AI Elements](https://vercel.com/changelog/introducing-ai-elements) - Vercel. 20+ shadcn/ui-based React components for AI interfaces (message threads, reasoning panels, tool output), integrated with the AI SDK.
 - [ChatKit](https://github.com/openai/chatkit-js) - OpenAI. Embeddable chat UI framework with streaming, tool visualization, and agent-rendered interactive widgets.
+- [Creance](https://github.com/amitshrivastavaa/creance) - React components for supervising AI agents: approval prompts, tool-call timelines, diff review and handoffs, with a Vercel AI SDK example.
 - [GPT-Vis](https://github.com/antvis/GPT-Vis) - AntV. Visualization components designed for LLM-generated outputs.
 - [Markstream](https://github.com/Simon-He95/markstream-vue) - Multi-framework streaming Markdown components for AI chat, with Mermaid, KaTeX, code highlighting, safe HTML, and SSR support.
 - [Pasta UI](https://pastaui.com/) - MIT-licensed shadcn/ui registry of 50+ React components for agent interfaces: prompt input, tool approvals, tool timelines, reasoning text, citations and file diffs.
