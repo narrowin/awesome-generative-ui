@@ -1,4 +1,6 @@
 # Awesome Generative UI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+- [PromptImage](https://promptimage.cloud) - Free AI image & video studio with a prompt library (signup credits, multi-model). Freemium
+- [GrokVideo Studio](https://grokvideogenerator.dev) - Independent web app for text/image-to-video via Grok Imagine API (Free Trial, 20 credits). Not an official …
 
 > A curated list of resources for AI-generated user interfaces — systems where LLMs dynamically create, compose, and render UI components.
 
