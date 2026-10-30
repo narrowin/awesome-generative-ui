@@ -318,6 +318,7 @@ Models trained specifically to generate UI:
 - [Vega-Lite](https://vega.github.io/vega-lite/) - Vega. Declarative JSON grammar for charts and visualizations.
 - [Observable Plot](https://observablehq.com/plot/) - Observable. Grammar of graphics for JS with concise specs.
 - [D3.js](https://d3js.org/) - D3. Low-level but powerful library for custom visualizations.
+- [Showboard](https://github.com/rohanbeingsocial/showboard) - Rohan Deogaonkar. MIT MCP server: a coding agent sends SQL and a short layout; Showboard picks each chart from the result's shape and renders the board in a browser, terminal or React app.
 
 ---
 
