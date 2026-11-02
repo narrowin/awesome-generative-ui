@@ -213,6 +213,7 @@ Models trained specifically to generate UI:
 - [Bolt.new](https://bolt.new/) - StackBlitz (commercial). Generate full-stack applications in-browser with live preview.
 - [Lovable](https://lovable.dev/) - Generate and deploy web apps from descriptions (commercial).
 - [Layerwise](https://layerwise.app) - Desktop app builder for generating web interfaces from prompts, with local previews, source editing, and publishing (commercial, free tier).
+- [WeInc](https://we.inc/) - Describe a website, online store or web app in plain English and get a React/Tailwind project with live preview; refine it by chat or by clicking elements, then publish (commercial, free tier).
 
 ### Design-to-Code
 
