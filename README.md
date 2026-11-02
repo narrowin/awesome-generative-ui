@@ -305,6 +305,7 @@ Models trained specifically to generate UI:
 *Components designed for LLM-powered apps:*
 
 - [AI Elements](https://vercel.com/changelog/introducing-ai-elements) - Vercel. 20+ shadcn/ui-based React components for AI interfaces (message threads, reasoning panels, tool output), integrated with the AI SDK.
+- [chat-ui](https://github.com/Cognipeer/chat-ui) - Cognipeer. MIT-licensed React chat UI for AI agents with streaming, expandable tool-call display, inline tool approvals and agent questions, plan and reasoning blocks, and file preview.
 - [ChatKit](https://github.com/openai/chatkit-js) - OpenAI. Embeddable chat UI framework with streaming, tool visualization, and agent-rendered interactive widgets.
 - [GPT-Vis](https://github.com/antvis/GPT-Vis) - AntV. Visualization components designed for LLM-generated outputs.
 - [Markstream](https://github.com/Simon-He95/markstream-vue) - Multi-framework streaming Markdown components for AI chat, with Mermaid, KaTeX, code highlighting, safe HTML, and SSR support.
