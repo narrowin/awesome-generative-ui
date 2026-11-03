@@ -205,6 +205,7 @@ Models trained specifically to generate UI:
 
 - [v0](https://v0.app/) - Vercel (commercial). Generate React/Tailwind components from prompts; known for shadcn/ui integration.
 - [OpenUI (Weights & Biases)](https://github.com/wandb/openui) - Describe UI in natural language and see it rendered live.
+- [DESIGN:OS CLI](https://github.com/jangtrinh/design-os) - Jang Trịnh (free, source-available). Agent skills for Claude Code, Codex and Antigravity that turn a plain-language UI brief into web or SwiftUI code through deterministic quality gates.
 
 ### App Builders
 
