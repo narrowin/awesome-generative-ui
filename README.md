@@ -181,6 +181,7 @@ Purpose-built for streaming AI-generated interfaces:
 - [CopilotKit](https://github.com/CopilotKit/CopilotKit) - Full-stack framework for in-app agents and generative UI across React, Angular, mobile, and Slack; makers of the AG-UI protocol.
 - [assistant-ui](https://github.com/assistant-ui/assistant-ui) - TypeScript/React primitives for AI chat with a first-class generative-UI primitive that renders agent-described components from a consumer-provided allowlist.
 - [OpenUI (Thesys)](https://github.com/thesysdev/openui) - Thesys. MIT-licensed generative UI framework built around OpenUI Lang, a compact streaming DSL for model-generated component trees, with runtimes for React, Vue, Svelte, and Angular. Also powers the commercial [C1](https://www.thesys.dev/) API.
+- [pleatkit](https://github.com/Kappatich/pleatkit) - React + Vite library where an agent rewrites only allow-listed panels for the user who asked; checked and compiled before display, with per-user undo. Emerging.
 
 ### Supporting Libraries
 
