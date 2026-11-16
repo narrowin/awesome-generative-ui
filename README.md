@@ -327,6 +327,7 @@ Models trained specifically to generate UI:
 
 - [Chatbot](https://github.com/vercel/chatbot) - Vercel. Full-featured chatbot with generative UI using the AI SDK.
 - [morphic](https://github.com/miurla/morphic) - AI-powered search engine with generative answer UI.
+- [KITE](https://github.com/fidenit/KITE) - FIDENIT. Desktop AI workspace where the model edits a board of cards (timelines, routes, charts, forms) instead of writing text, with pending decisions gathered in one place.
 
 ---
 
