@@ -124,6 +124,7 @@ In practice, the 2025–2026 wave of developer tooling has mostly leaned the oth
 - [StructEval](https://arxiv.org/abs/2505.20139) - Benchmark for LLM generation and conversion across 18 structured formats, including rendered HTML, React, and SVG (TIGER-AI-Lab, TMLR 2025).
 - [ArtifactsBench](https://arxiv.org/abs/2507.04952) - Benchmark of 1,825 tasks for generating visual, interactive artifacts (web apps, SVG, games), scored by an MLLM judge from rendered screenshots (Tencent Hunyuan, 2025).
 - [Interaction2Code](https://arxiv.org/abs/2411.03292) - Benchmark for generating interactive webpages from interactive prototypes rather than static designs (ASE 2025).
+- [WebsiteBench](https://github.com/TIGER-AI-Lab/WebsiteBench) - TIGER-AI-Lab. Evaluates coding agents on full-stack website reconstruction from browser exploration, with hidden tests for visual fidelity, user workflows, and state persistence.
 - [WebDev Arena](https://arena.ai/leaderboard/webdev) - LMArena. Crowd-voted leaderboard where models build web apps side by side.
 - [WebArena](https://github.com/web-arena-x/webarena) - Realistic web environment and benchmark for agents interacting with live websites.
 - [VisualWebArena](https://github.com/web-arena-x/visualwebarena) - Vision-grounded WebArena variant for UI understanding and interaction.
