@@ -238,6 +238,7 @@ Models trained specifically to generate UI:
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp) - Microsoft. MCP server for browser automation and UI regression testing workflows.
 - [shadcn-vue-mcp](https://github.com/HelloGGX/shadcn-vue-mcp) - HelloGGX. MCP server for shadcn-vue component knowledge.
 - [bestax-mcp](https://github.com/allxsmith/bestax/tree/main/bestax-mcp) - Alex Smith. Offline MCP server for Bestax, a React component library for Bulma v1, with props, examples, CSS variables and Agent Skills.
+- [Kite](https://kite.new/) - Kite. Hosted MCP server that lets coding agents draw editable frames, text and components in a shared design file, then copy frames as HTML, React or Tailwind; free plan.
 
 ### AI Products with UI Generation
 
