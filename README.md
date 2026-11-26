@@ -219,6 +219,7 @@ Models trained specifically to generate UI:
 *"Convert visuals to working code."*
 
 - [Screenshot-to-Code](https://github.com/abi/screenshot-to-code) - Convert screenshots or designs to HTML/React/Vue code.
+- [K3.1 Studio](https://kimik3pro.com/tools/ui-to-code) - Independent tool that converts screenshots into React and Tailwind code; one free trial without an account.
 - [tldraw make-real](https://makereal.tldraw.com/) - Turn a wireframe into a working React component.
 - [Google Stitch](https://stitch.withgoogle.com/) - Google Labs. Generates web and mobile UI designs plus front-end code from prompts, screenshots, or sketches.
 - [Figma Make](https://www.figma.com/make/) - Figma. Prompt-to-UI inside Figma that builds working interfaces using your existing components and design system.
