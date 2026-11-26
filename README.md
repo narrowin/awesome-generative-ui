@@ -238,6 +238,7 @@ Models trained specifically to generate UI:
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp) - Microsoft. MCP server for browser automation and UI regression testing workflows.
 - [shadcn-vue-mcp](https://github.com/HelloGGX/shadcn-vue-mcp) - HelloGGX. MCP server for shadcn-vue component knowledge.
 - [bestax-mcp](https://github.com/allxsmith/bestax/tree/main/bestax-mcp) - Alex Smith. Offline MCP server for Bestax, a React component library for Bulma v1, with props, examples, CSS variables and Agent Skills.
+- [ReUI MCP](https://reui.io/docs/mcp?utm_source=github&utm_medium=community&utm_campaign=reui-nov26) - Keenthemes. The ReUI MCP server puts the live ReUI registry inside your coding agent - scored search, real component APIs, and exact install commands over one endpoint.
 
 ### AI Products with UI Generation
 
